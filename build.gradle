@@ -17,7 +17,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.1.RELEASE")
     }
 }
 
@@ -26,6 +26,7 @@ dependencies {
     compile("org.projectlombok:lombok:1.16.20")
 
     testCompile("junit:junit:4.12")
+    testCompile("org.assertj:assertj-core:3.9.1")
     testCompile("com.jayway.jsonpath:json-path:2.4.0")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

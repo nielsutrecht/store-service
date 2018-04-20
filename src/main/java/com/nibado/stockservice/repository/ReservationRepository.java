@@ -30,9 +30,13 @@ public class ReservationRepository {
     public Map<UUID, Integer> findReservations(final UUID storeId) {
         return reservations.stream()
                 .filter(r -> r.getStoreId().equals(storeId))
-                .filter(r -> r.getUntil().isBefore(now()))
+                .filter(r -> now().isBefore(r.getUntil()))
                 .collect(
                         groupingBy(ReservationEntity::getItemId, summingInt(ReservationEntity::getAmount)));
+    }
+
+    public void deleteAll(final UUID storeId, final UUID itemId) {
+        reservations.removeIf(r -> r.getStoreId().equals(storeId) && r.getItemId().equals(itemId));
     }
 
     @Scheduled(fixedRate = 60_000) //One minute

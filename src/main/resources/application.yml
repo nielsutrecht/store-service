@@ -1,0 +1,3 @@
+service:
+  reservations:
+    max-duration: 1800 #seconds
